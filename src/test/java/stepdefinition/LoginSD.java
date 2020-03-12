@@ -7,7 +7,6 @@ import framework.webPages.HomePage;
 import framework.webPages.LoginPage;
 import org.testng.Assert;
 
-
 /**
  * Created by mohammadmuntakim.
  */
