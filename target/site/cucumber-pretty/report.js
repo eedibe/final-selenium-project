@@ -1,9 +1,9 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("darksky_testing.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("darksky_temperature.feature");
 formatter.feature({
   "line": 2,
-  "name": "Signup Message feature",
+  "name": "Darksky temperature",
   "description": "",
-  "id": "signup-message-feature",
+  "id": "darksky-temperature",
   "keyword": "Feature",
   "tags": [
     {
@@ -21,7 +21,7 @@ formatter.feature({
   ]
 });
 formatter.before({
-  "duration": 3439504575,
+  "duration": 2930552580,
   "status": "passed"
 });
 formatter.background({
@@ -32,57 +32,45 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.scenario({
-  "line": 25,
-  "name": "Verify invalid signup error message",
+  "line": 12,
+  "name": "Verify timline is displayed in correct format",
   "description": "",
-  "id": "signup-message-feature;verify-invalid-signup-error-message",
+  "id": "darksky-temperature;verify-timline-is-displayed-in-correct-format",
   "type": "scenario",
   "keyword": "Scenario",
   "tags": [
     {
-      "line": 24,
-      "name": "@darksky-4"
+      "line": 11,
+      "name": "@darksky-2"
     }
   ]
 });
 formatter.step({
-  "line": 26,
-  "name": "I am on Darksky home page",
+  "line": 13,
+  "name": "I am on Darksky homepage",
   "keyword": "Given "
 });
 formatter.step({
-  "line": 27,
-  "name": "I click on Register button",
-  "keyword": "When "
-});
-formatter.step({
-  "line": 28,
-  "name": "I verify I am on Register page by asserting Register header",
+  "line": 14,
+  "name": "I verify timeline is displayed with two hours incremented",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "DarkSky_RegisterSD.onHomepage()"
+  "location": "DarkSky_TimeIncrement_2SD.amIonHomepage()"
 });
 formatter.result({
-  "duration": 5445148098,
+  "duration": 263061422,
   "status": "passed"
 });
 formatter.match({
-  "location": "DarkSky_RegisterSD.clickonResgiterbutton()"
+  "location": "DarkSky_TimeIncrement_2SD.verifyTimeIncrementedByTwoHours()"
 });
 formatter.result({
-  "duration": 64643178,
-  "status": "passed"
-});
-formatter.match({
-  "location": "DarkSky_RegisterSD.getRegisterError()"
-});
-formatter.result({
-  "duration": 34921214,
+  "duration": 199654905,
   "status": "passed"
 });
 formatter.after({
-  "duration": 135273305,
+  "duration": 142864547,
   "status": "passed"
 });
 });
