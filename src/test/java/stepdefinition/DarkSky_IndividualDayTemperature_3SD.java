@@ -28,11 +28,15 @@ public class DarkSky_IndividualDayTemperature_3SD extends HomePageForDarkSky {
         Thread.sleep(3000);
     }
 
-    @Then("^ Then I verify lowest and highest temp is displayed correctly$")
-     public void verifyLowestHighestTempDisplayedCorrectly(){
+    @Then("^I verify lowest and highest temp is displayed correctly$")
+     public void verifyLowAndHightTempDisplayedCorrectly(){
         //compering temperatures
         Assert.assertEquals(getLowTempDay(),getLowTempDayExtras());
+        System.out.println("Low temperature from bar is " + getLowTempDay());
+        System.out.println(("Low temperature from timeLine is " + getLowTempDayExtras()));
         Assert.assertEquals(getHighTempDay(),getHighDayExtras());
+        System.out.println("High temperature from bar is " + getHighTempDay());
+        System.out.println(("High temperature from timeLine is " + getHighDayExtras()));
 
     }
 

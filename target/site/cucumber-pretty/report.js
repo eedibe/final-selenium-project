@@ -21,7 +21,7 @@ formatter.feature({
   ]
 });
 formatter.before({
-  "duration": 2930552580,
+  "duration": 3402113917,
   "status": "passed"
 });
 formatter.background({
@@ -59,18 +59,18 @@ formatter.match({
   "location": "DarkSky_TimeIncrement_2SD.amIonHomepage()"
 });
 formatter.result({
-  "duration": 263061422,
+  "duration": 218182251,
   "status": "passed"
 });
 formatter.match({
   "location": "DarkSky_TimeIncrement_2SD.verifyTimeIncrementedByTwoHours()"
 });
 formatter.result({
-  "duration": 199654905,
+  "duration": 194881960,
   "status": "passed"
 });
 formatter.after({
-  "duration": 142864547,
+  "duration": 106437276,
   "status": "passed"
 });
 });

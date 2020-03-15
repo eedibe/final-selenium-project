@@ -4,9 +4,13 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class DarkSky_TimeIncrement_2SD {
@@ -19,45 +23,65 @@ public class DarkSky_TimeIncrement_2SD {
 
     @Then("^I verify timeline is displayed with two hours incremented$")
      public void verifyTimeIncrementedByTwoHours() {
+
+        /**
+         * From web -> ["Now" "11am" "1pm" "3pm" "5pm"]
+         *
+         * using java -> ["Now"]
+         *      current time -> Sat Mar 14 09 07 00 AM EST
+         *      convert current time using format=ha -> 9am
+         *      Adding 2 hours in time -> 11am
+         *      Convert time into String -> "11am"
+         *      add into arrayList -> ["Now", "11am"]
+         *      Adding 2 hours in time -> 1pm
+         *      Convert time into String -> "1pm"
+         *      add into arrayList -> ["Now", "11am", "1pm", "3pm", "5pm"]
+         */
         // get all the time elements in string
-        String timesString = SharedSD.getDriver().findElement(By.xpath("//div[@id='timeline']//div[@class='hours']")).getText();
+        String webElementTimes = SharedSD.getDriver().findElement(By.xpath("//div[@id='timeline']//div[@class='hours']")).getText();
 
         // seperate the times elements by new line in an array of String
-        String[] timeStrArray = timesString.split("\\n");
+        String[] webElementArray = webElementTimes.split("\\n");
 
-         // convert the list of time String to a list of Time object, do not add "Now" to the list
-        ArrayList<LocalTime> times = new ArrayList<>();
+        // create arrayList String webElementTimes
+        ArrayList<String> webTimesArrayList = new ArrayList<>();
 
-        DateTimeFormatter parser = DateTimeFormatter.ofPattern("h[:mm]a");
+        // get local time and format the time
+        DateTimeFormatter FOMATTER = DateTimeFormatter.ofPattern("ha");
+        LocalTime localTime = LocalTime.now().plusHours(2);
+        String localTimeString = FOMATTER.format(localTime).toLowerCase();
+        //create arrayList to store local time
+        ArrayList<String> localTimeArrayList= new ArrayList<>();
 
-        //for(String timeStr : timeStrArray) {
-        for(int i = 1; i<timeStrArray.length;i++){
-            String timeStr = timeStrArray[i];
-            //check if is "Now" then skip to next value
-            if("Now".equals(timeStr))
+        //add the string array elements to arraylist //    for(String timeStr : timeStrArray) {
+        for(int i = 0; i<webElementArray.length;i++){
+            if("Now".equals(webElementArray[i])) {
                 continue;
-            //covernting string to localtime
-            LocalTime localTime = LocalTime.parse(timeStr.toUpperCase(), parser);
-            //adding time to Localtime arraylist
-            times.add(localTime);
-        }
-
-        // verify that all the element in your Time list are in 2 hour distance
-        LocalTime firstTime = times.get(0);
-        boolean inorder = true;
-        for(int i = 1; i<times.size();i++){
-            firstTime = firstTime.plusHours(2);
-            if(firstTime.equals(times.get(i))){
-                // timeline is two hours appart
-
             }
-            else{
-                // the time is not 2 hours appart
-                inorder = false;
+            webTimesArrayList.add(webElementArray[i]);
+        }
+        System.out.print("Time displayed on darksky webstie is : "+ webTimesArrayList);
+        //add local time elements to arraylist same size as webTimesArrayList
+        for(int i =0; i<webTimesArrayList.size(); i++){
+            localTimeArrayList.add(localTimeString);
+            localTime = localTime.plusHours(2);
+            localTimeString = FOMATTER.format(localTime).toLowerCase();
+
+        }
+        System.out.print("\nLocal time is: "+ localTimeArrayList);
+        boolean inOrder = true;
+        for(int i= 0; i<webTimesArrayList.size();i++){
+            if(webTimesArrayList.equals(localTimeArrayList)){
+                inOrder = true;
+            }
+            else {
+                inOrder=false;
                 break;
             }
         }
-        System.out.println("Time line is displayed with 2 hours increment: " + inorder);
+
+      System.out.println("\nTime line is displayed with 2 hours increment: " + inOrder);
 
     }
+
 }
