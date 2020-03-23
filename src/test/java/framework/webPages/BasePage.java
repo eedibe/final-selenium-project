@@ -61,6 +61,11 @@ public class BasePage {
 		//select element by visible text
 		selectMonth.selectByVisibleText(dropdownText);
 	}
+	public void selectByTextFromDropDown(By locator, String text) {
+		WebElement dropDownElement = SharedSD.getDriver().findElement(locator);
+		Select dropDown = new Select(dropDownElement);
+		dropDown.selectByVisibleText(text);
+	}
 
 	public void selectFromDropdown(By locator, int index) {
 		WebElement month = webAction(locator);

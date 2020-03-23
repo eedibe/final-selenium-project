@@ -1,9 +1,9 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("darksky_temperature.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("hotels.feature");
 formatter.feature({
-  "line": 2,
-  "name": "Darksky temperature",
+  "line": 3,
+  "name": "Hotels features",
   "description": "",
-  "id": "darksky-temperature",
+  "id": "hotels-features",
   "keyword": "Feature",
   "tags": [
     {
@@ -12,65 +12,181 @@ formatter.feature({
     },
     {
       "line": 1,
-      "name": "@regression"
+      "name": "@hotel"
     },
     {
       "line": 1,
-      "name": "@darksky"
+      "name": "@regression"
     }
   ]
 });
+formatter.scenarioOutline({
+  "line": 30,
+  "name": "Verify room count dropdown",
+  "description": "",
+  "id": "hotels-features;verify-room-count-dropdown",
+  "type": "scenario_outline",
+  "keyword": "Scenario Outline",
+  "tags": [
+    {
+      "line": 29,
+      "name": "@hotel-4"
+    }
+  ]
+});
+formatter.step({
+  "line": 31,
+  "name": "I am on hotels.com home page",
+  "keyword": "Given "
+});
+formatter.step({
+  "line": 32,
+  "name": "I select \u003cselect_rooms\u003e from room dropdown",
+  "keyword": "Then "
+});
+formatter.step({
+  "line": 33,
+  "name": "I verify \u003cnumber_of_room_dropdown\u003e is displayed",
+  "keyword": "And "
+});
+formatter.examples({
+  "line": 34,
+  "name": "",
+  "description": "",
+  "id": "hotels-features;verify-room-count-dropdown;",
+  "rows": [
+    {
+      "cells": [
+        "select_rooms",
+        "number_of_room_dropdown"
+      ],
+      "line": 35,
+      "id": "hotels-features;verify-room-count-dropdown;;1"
+    },
+    {
+      "comments": [
+        {
+          "line": 36,
+          "value": "#| 2            | 2                    |"
+        },
+        {
+          "line": 37,
+          "value": "#| 3            | 3                    |"
+        }
+      ],
+      "cells": [
+        "4",
+        "4"
+      ],
+      "line": 38,
+      "id": "hotels-features;verify-room-count-dropdown;;2"
+    }
+  ],
+  "keyword": "Examples"
+});
 formatter.before({
-  "duration": 3402113917,
+  "duration": 4320033897,
   "status": "passed"
 });
 formatter.background({
-  "line": 4,
+  "line": 5,
   "name": "",
   "description": "",
   "type": "background",
   "keyword": "Background"
 });
 formatter.scenario({
-  "line": 12,
-  "name": "Verify timline is displayed in correct format",
+  "comments": [
+    {
+      "line": 36,
+      "value": "#| 2            | 2                    |"
+    },
+    {
+      "line": 37,
+      "value": "#| 3            | 3                    |"
+    }
+  ],
+  "line": 38,
+  "name": "Verify room count dropdown",
   "description": "",
-  "id": "darksky-temperature;verify-timline-is-displayed-in-correct-format",
+  "id": "hotels-features;verify-room-count-dropdown;;2",
   "type": "scenario",
-  "keyword": "Scenario",
+  "keyword": "Scenario Outline",
   "tags": [
     {
-      "line": 11,
-      "name": "@darksky-2"
+      "line": 29,
+      "name": "@hotel-4"
+    },
+    {
+      "line": 1,
+      "name": "@regression"
+    },
+    {
+      "line": 1,
+      "name": "@hotel"
+    },
+    {
+      "line": 1,
+      "name": "@web"
     }
   ]
 });
 formatter.step({
-  "line": 13,
-  "name": "I am on Darksky homepage",
+  "line": 31,
+  "name": "I am on hotels.com home page",
   "keyword": "Given "
 });
 formatter.step({
-  "line": 14,
-  "name": "I verify timeline is displayed with two hours incremented",
+  "line": 32,
+  "name": "I select 4 from room dropdown",
+  "matchedColumns": [
+    0
+  ],
   "keyword": "Then "
 });
+formatter.step({
+  "line": 33,
+  "name": "I verify 4 is displayed",
+  "matchedColumns": [
+    1
+  ],
+  "keyword": "And "
+});
 formatter.match({
-  "location": "DarkSky_TimeIncrement_2SD.amIonHomepage()"
+  "location": "Hotels_RoomCountSD.onHomepage()"
 });
 formatter.result({
-  "duration": 218182251,
+  "duration": 231703428,
   "status": "passed"
 });
 formatter.match({
-  "location": "DarkSky_TimeIncrement_2SD.verifyTimeIncrementedByTwoHours()"
+  "arguments": [
+    {
+      "val": "4",
+      "offset": 9
+    }
+  ],
+  "location": "Hotels_RoomCountSD.selectRooms(String)"
 });
 formatter.result({
-  "duration": 194881960,
+  "duration": 3328692686,
+  "status": "passed"
+});
+formatter.match({
+  "arguments": [
+    {
+      "val": "4",
+      "offset": 9
+    }
+  ],
+  "location": "Hotels_RoomCountSD.verifyRoomCountDropdown(String)"
+});
+formatter.result({
+  "duration": 222449386,
   "status": "passed"
 });
 formatter.after({
-  "duration": 106437276,
+  "duration": 181530844,
   "status": "passed"
 });
 });
